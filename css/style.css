@@ -130,10 +130,7 @@
   border: 1px solid lightgray;
   border-radius: 5px;
   position: relative;
-}
-
-.contacts-research input::placeholder {
-  text-align: center;
+  padding-left: 2.5rem;
 }
 
 .contacts-research i {
@@ -189,10 +186,31 @@
   flex-direction: column;
 }
 
+/* Sezione Profilo Contatto */
+
 .contact-profile {
   height: 50px;
   background-color: #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+#profile {
+  width: 100%;
+  height: 100%;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons i {
+  margin: 0 .5rem;
+}
+
+/* Sezione Invio e Ricezione messaggi */
 
 .messages-background {
   background-image: url(../img/boolzapp-background.jpg);
@@ -200,9 +218,51 @@
   background-repeat: repeat;
   flex-grow: 1;
   overflow-y: auto;
+  padding: 4rem 6rem;
+  display: flex;
+  flex-direction: column;
 }
+
+.message {
+  width: 200px;
+  height: 40px;
+  padding: 1rem;
+  border-radius: 8px;
+  color: rgb(81, 81, 81);
+  margin-bottom: .5rem;
+}
+
+.sent {
+  background-color: #d5f9ba;
+  display: flex;
+  align-self: flex-end; 
+}
+
+.received {
+  background-color: #fff;
+}
+
+/* Sezione Invio messaggio */
 
 .send-messsage {
   height: 50px;
   background-color: #f3eeea;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
 }
+
+.send-messsage input {
+  width: 90%;
+  height: 70%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding-left: 1rem;
+}
+
+.send-messsage i {
+  font-size: 1.25rem;
+}
+
+

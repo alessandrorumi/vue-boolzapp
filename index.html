@@ -102,13 +102,53 @@
           <div class="messages">
 
             <!-- Profilo dell'interlocutore -->
-            <div class="contact-profile"></div>
+            <div class="contact-profile">
+              <div class="contact" id="profile">
+                <!-- Img -->
+                <div class="image">
+                  <img :src="contacts[0].avatar" :alt="contacts[0].name">
+                </div>
+                <div class="contact-info">
+                  <!-- Nome -->
+                  <div class="name-last-text">
+                    <span>{{ contacts[0].name }}</span>
+                    <br>
+                    <span class="subtitle">Ultimo messaggio inviato</span>
+                  </div>
+                  <div class="icons">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #c0c0c0;"></i>
+                    <i class="fa-solid fa-paperclip" style="color: #c0c0c0;"></i>
+                    <i class="fa-solid fa-ellipsis-vertical" style="color: #c0c0c0;"></i>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
 
             <!-- Background Messaggi -->
-            <div class="messages-background"></div>
+            <div class="messages-background">
+              <div class="message sent">
+                TEST 1 INVIATO
+              </div>
+              <div class="message sent">
+                TEST 2 INVIATO
+              </div>
+              <div class="message received">
+                TEST 1 RICEVUTO
+              </div>
+              
+            </div>
 
             <!-- Sezione Invio Messaggio -->
-            <div class="send-messsage"></div>
+            <div class="send-messsage">
+              <div class="smile-icon">
+                <i class="fa-regular fa-face-smile" style="color: #6a6a6a;"></i>
+              </div>
+              <input type="text" placeholder="Scrivi un messaggio">
+              <div class="microphone-icon">
+                <i class="fa-solid fa-microphone" style="color: #6a6a6a;"></i>
+              </div>
+            </div>
 
           </div>
         
