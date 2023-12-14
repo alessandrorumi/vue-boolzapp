@@ -6,6 +6,8 @@ createApp({
 
     return {
 
+      activeItem: 0,
+
         contacts: [
           {
               name: 'Michele',
@@ -175,6 +177,11 @@ createApp({
   },
 
   methods: {
+
+    showConversation(i) {
+      console.log(`Click effettuato sul contatto n° ${i + 1}`);
+      this.activeItem = i;
+    }
 
   },
 

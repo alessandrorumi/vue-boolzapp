@@ -78,15 +78,15 @@
             <div class="contacts-list">
       
               <!-- Contatti (Vue) -->
-              <div class="contact" v-for="(contact, i) in contacts">
+              <div class="contact" v-for="(contact, i) in contacts" :key="i" @click="showConversation(i)">
                 <!-- Img -->
                 <div class="image">
-                  <img :src="contacts[i].avatar" :alt="contacts[i].name">
+                  <img :src="contact.avatar" :alt="contact.name">
                 </div>
                 <div class="contact-info">
                   <!-- Nome -->
                   <div class="name-last-text">
-                    <span>{{ contacts[i].name }}</span>
+                    <span>{{ contact.name }}</span>
                     <br>
                     <span class="subtitle">Ultimo messaggio inviato</span>
                   </div>
@@ -127,14 +127,9 @@
 
             <!-- Background Messaggi -->
             <div class="messages-background">
-              <div class="message sent">
-                TEST 1 INVIATO
-              </div>
-              <div class="message sent">
-                TEST 2 INVIATO
-              </div>
-              <div class="message received">
-                TEST 1 RICEVUTO
+              
+              <div v-for="message in contacts[activeItem].messages" class="message" :class="message.status === 'sent' ? 'sent' : 'received'">
+                {{ message.message }}
               </div>
               
             </div>
