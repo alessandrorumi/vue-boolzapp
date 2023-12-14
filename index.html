@@ -76,16 +76,17 @@
 
             <!-- Lista contatti -->
             <div class="contacts-list">
-              <!-- Contatto 1 -->
-              <div class="contact">
+      
+              <!-- Contatti (Vue) -->
+              <div class="contact" v-for="(contact, i) in contacts">
                 <!-- Img -->
                 <div class="image">
-                  <img src="img/avatar-boolzap/avatar_1.jpg" alt="">
+                  <img :src="contacts[i].avatar" :alt="contacts[i].name">
                 </div>
                 <div class="contact-info">
                   <!-- Nome -->
                   <div class="name-last-text">
-                    <span>Michele</span>
+                    <span>{{ contacts[i].name }}</span>
                     <br>
                     <span class="subtitle">Ultimo messaggio inviato</span>
                   </div>
@@ -93,60 +94,7 @@
                   <span class="time subtitle">12:00</span>
                 </div>
               </div>
-
-              <!-- Contatto 2 -->
-              <div class="contact">
-                <!-- Img -->
-                <div class="image">
-                  <img src="img/avatar-boolzap/avatar_2.jpg" alt="">
-                </div>
-                <div class="contact-info">
-                  <!-- Nome -->
-                  <div class="name-last-text">
-                    <span>Fabio</span>
-                    <br>
-                    <span class="subtitle">Ultimo messaggio inviato</span>
-                  </div>
-                  <!-- Ora -->
-                  <span class="time subtitle">12:00</span>
-                </div>
-              </div>
-
-              <!-- Contatto 3 -->
-              <div class="contact">
-                <!-- Img -->
-                <div class="image">
-                  <img src="img/avatar-boolzap/avatar_3.jpg" alt="">
-                </div>
-                <div class="contact-info">
-                  <!-- Nome -->
-                  <div class="name-last-text">
-                    <span>Sofia</span>
-                    <br>
-                    <span class="subtitle">Ultimo messaggio inviato</span>
-                  </div>
-                  <!-- Ora -->
-                  <span class="time subtitle">12:00</span>
-                </div>
-              </div>
-  
-              <!-- Contatto 4 -->
-              <div class="contact">
-                <!-- Img -->
-                <div class="image">
-                  <img src="img/avatar-boolzap/avatar_4.jpg" alt="">
-                </div>
-                <div class="contact-info">
-                  <!-- Nome -->
-                  <div class="name-last-text">
-                    <span>Alessandro B.</span>
-                    <br>
-                    <span class="subtitle">Ultimo messaggio inviato</span>
-                  </div>
-                  <!-- Ora -->
-                  <span class="time subtitle">12:00</span>
-                </div>
-              </div>
+              
             </div>
           </div>
           
