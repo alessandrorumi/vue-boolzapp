@@ -4,8 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Integrazione Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Integrazione CSS -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Intergazione Axios -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js'></script>
+  <!-- Integrazione Vue -->
   <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
   <title>Boolzapp</title>
 </head>
@@ -30,8 +35,29 @@
         </div>
 
         <!-- Contenuto Boolzapp -->
-        <div class="content">
+        <div class="main-content">
+         
+          <!-- Accounts (Sinistra)-->
+          <div class="accounts">
+            
+            <!-- Profilo dell'utente -->
+            <div class="my-profile"></div>
+
+            <!-- Notifiche -->
+            <div class="notifications"></div>
+
+            <!-- Ricerca Contatti -->
+            <div class="contacts-research"></div>
+
+            <!-- Lista contatti -->
+            <div class="contacts-list">
+            </div>
+
+          </div>
           
+          <!-- Messaggi (Destra) -->
+          <div class="messages"></div>
+        
         </div>
 
       </div>

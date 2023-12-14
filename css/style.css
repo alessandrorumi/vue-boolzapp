@@ -27,7 +27,9 @@
   background-color: #d7dbd6;
 }
 
-.content {
+/* Main content */
+
+.main-content {
   width: 70%;
   height: calc(100% - 2rem);
   margin: 1rem auto;
@@ -35,5 +37,38 @@
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translateX(-50%);;
+  transform: translateX(-50%);
+}
+
+/* Accounts (Sinistra) */
+
+.accounts {
+  width: 35%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* DEBUG (DA OTTIMIZZARE) */
+  border-right: 1px solid grey;
+}
+
+.my-profile {
+  height: 50px;
+  background-color: #eaeaea;
+}
+
+.notifications {
+  height: 50px;
+  background-color: #8edafc;
+}
+
+.contacts-research {
+  height: 40px;
+  background-color: #eaeaea;
+}
+
+.contacts-list {
+  flex-grow: 1;
+  background-color: #eaeaea;
+  border-top: 1px solid black;
+  overflow-y: auto;
 }
