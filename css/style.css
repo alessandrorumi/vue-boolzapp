@@ -46,6 +46,7 @@
 .accounts {
   width: 35%;
   height: 100%;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
   /* DEBUG (DA OTTIMIZZARE) */

@@ -71,14 +71,15 @@
 
             <!-- Ricerca Contatti -->
             <div class="contacts-research">
-              <input type="text" placeholder="Cerca o inizia una nova chat"><i class="fa-solid fa-magnifying-glass" style="color: #c0c0c0;"></i>
+              <input type="text" placeholder="Cerca o inizia una nova chat" v-model="search">
+              <i class="fa-solid fa-magnifying-glass" style="color: #c0c0c0;"></i>
             </div>
 
             <!-- Lista contatti -->
             <div class="contacts-list">
       
               <!-- Contatti (Vue) -->
-              <div class="contact" v-for="(contact, i) in contacts" :key="i" @click="showConversation(i)" :class="activeColor === i ? 'active' : '' ">
+              <div class="contact" v-for="(contact, i) in contacts" :key="i" @click="showConversation(i)" :class="activeColor === i ? 'active' : '' " v-show="contacts[i].name.includes(search)">
                 <!-- Img -->
                 <div class="image">
                   <img :src="contact.avatar" :alt="contact.name">
