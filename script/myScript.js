@@ -181,7 +181,7 @@ createApp({
   methods: {
 
     showConversation(i) {
-      console.log(`Click effettuato sul contatto n° ${i + 1}`);
+      // console.log(`Click effettuato sul contatto n° ${i + 1}`);
       this.activeItem = i;
       this.activeColor = i
     },
@@ -189,6 +189,10 @@ createApp({
     addMsg(activeItem) {
       this.contacts[activeItem].messages.push({ message: this.userMessage.message, status: 'sent' });
       this.userMessage.message = '';
+
+      setTimeout(() => {
+        this.contacts[activeItem].messages.push({ message: 'OK', status: 'received' });
+      }, 1000);
     }
 
   },
