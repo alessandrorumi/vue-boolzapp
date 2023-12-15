@@ -6,8 +6,10 @@ createApp({
 
     return {
 
-      activeItem: 0,
-
+        activeItem: 0,
+        activeColor: '',
+        userMessage: {message: '', status: 'sent'},
+    
         contacts: [
           {
               name: 'Michele',
@@ -181,6 +183,12 @@ createApp({
     showConversation(i) {
       console.log(`Click effettuato sul contatto n° ${i + 1}`);
       this.activeItem = i;
+      this.activeColor = i
+    },
+
+    addMsg(activeItem) {
+      this.contacts[activeItem].messages.push({ message: this.userMessage.message, status: 'sent' });
+      this.userMessage.message = '';
     }
 
   },

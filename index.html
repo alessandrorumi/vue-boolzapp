@@ -78,7 +78,7 @@
             <div class="contacts-list">
       
               <!-- Contatti (Vue) -->
-              <div class="contact" v-for="(contact, i) in contacts" :key="i" @click="showConversation(i)">
+              <div class="contact" v-for="(contact, i) in contacts" :key="i" @click="showConversation(i)" :class="activeColor === i ? 'active' : '' ">
                 <!-- Img -->
                 <div class="image">
                   <img :src="contact.avatar" :alt="contact.name">
@@ -139,7 +139,7 @@
               <div class="smile-icon">
                 <i class="fa-regular fa-face-smile" style="color: #6a6a6a;"></i>
               </div>
-              <input type="text" placeholder="Scrivi un messaggio">
+              <input type="text" placeholder="Scrivi un messaggio" v-model="userMessage.message" @keyup.enter="addMsg(activeItem)">
               <div class="microphone-icon">
                 <i class="fa-solid fa-microphone" style="color: #6a6a6a;"></i>
               </div>
