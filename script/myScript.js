@@ -21,6 +21,7 @@ createApp({
                       date: '10/01/2020 15:30:55',
                       message: 'Hai portato a spasso il cane?',
                       status: 'sent'
+                      
                   },
                   {
                       date: '10/01/2020 15:50:00',
@@ -30,7 +31,7 @@ createApp({
                   {
                       date: '10/01/2020 16:15:22',
                       message: 'Tutto fatto!',
-                      status: 'received'
+                      status: 'received',
                   }
               ],
           },
@@ -194,7 +195,18 @@ createApp({
       setTimeout(() => {
         this.contacts[activeItem].messages.push({ message: 'OK', status: 'received' });
       }, 1000);
-    }
+      
+    },
+
+    toggleMessageSettings(i) {
+      // console.log('Click Messaggio ' + i);
+      this.contacts[i].visible = !this.contacts[i].visible
+    },
+
+    deleteMessage(contactIndex, i) {
+      // contactIndex si riferisce all'indice dell'array di oggetti "contacts", i è l'indice di riferimento dell'elemento da eliminare
+      this.contacts[contactIndex].messages.splice(i, 1);
+    }    
 
   },
 

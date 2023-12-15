@@ -12,6 +12,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js'></script>
   <!-- Integrazione Vue -->
   <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+  <!-- Titolo -->
   <title>Boolzapp</title>
 </head>
 
@@ -129,8 +130,16 @@
             <!-- Background Messaggi -->
             <div class="messages-background">
               
-              <div v-for="message in contacts[activeItem].messages" class="message" :class="message.status === 'sent' ? 'sent' : 'received'">
-                {{ message.message }}
+              <div v-for="(message, i) in contacts[activeItem].messages" class="message" :class="message.status === 'sent' ? 'sent' : 'received'">
+                {{ message.message }} 
+                <div class="message-time">{{ message.date }}</div>
+                <div class="delete-message" >
+                  <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i>
+                  <div class="delete-settings" :class="contacts[i].visible ? 'hidden' : 'active' ">
+                    <div class="info">Info Messaggio</div>
+                    <div class="delete" @click="deleteMessage(activeItem, i)">Cancella Messaggio</div>
+                  </div>
+                </div>
               </div>
               
             </div>

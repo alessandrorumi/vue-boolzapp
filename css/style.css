@@ -11,6 +11,18 @@
   font-size: 14px;
 }
 
+i:hover {
+  cursor: pointer;
+}
+
+.active {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Backgound */
 
 .background {
@@ -234,10 +246,50 @@
 .message {
   width: 250px;
   padding: .65rem;
+  padding-bottom: 1.5rem;
   border-radius: 8px;
   color: rgb(81, 81, 81);
   margin-bottom: .5rem;
   font-size: 13px;
+  position: relative;
+}
+
+.message-time {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 10px;
+}
+
+.delete-message {
+  position: absolute;
+  right: 5px;
+  top: .65rem;
+  left: auto;
+  font-size: 10px;
+  z-index: 200;
+}
+
+.delete-settings {
+  background-color: #fff;
+  width: 120px;
+  font-size: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 4px;
+}
+
+.delete-settings .info {
+  margin-bottom: .5rem;
+}
+
+.delete-settings > div {
+  padding: .75rem .5rem;
+}
+
+.delete-settings > div:hover {
+  background-color: rgb(240, 240, 240);
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .sent {
