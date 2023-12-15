@@ -131,10 +131,11 @@
             <div class="messages-background">
               
               <div v-for="(message, i) in contacts[activeItem].messages" class="message" :class="message.status === 'sent' ? 'sent' : 'received'">
-                {{ message.message }} 
+                {{ message.message }}
+                <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i>
                 <div class="message-time">{{ message.date }}</div>
                 <div class="delete-message" >
-                  <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i>
+                  <!-- <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i> -->
                   <div class="delete-settings" :class="contacts[i].visible ? 'hidden' : 'active' ">
                     <div class="info">Info Messaggio</div>
                     <div class="delete" @click="deleteMessage(activeItem, i)">Cancella Messaggio</div>

@@ -10,6 +10,7 @@ createApp({
         activeColor: '',
         userMessage: {message: '', status: 'sent'},
         search: '',
+        activeMessageSettings: null, 
     
         contacts: [
           {
