@@ -6,12 +6,20 @@ createApp({
 
     return {
 
+        // Elemento visualizzato in quel momento
         activeItem: 0,
-        activeColor: '',
+        // Colore del contatto relativo alla chat corrispondente
+        activeColor: 0,
+        // Oggetto messaggio inviato da "me"
         userMessage: {message: '', status: 'sent'},
+        // Ricerca utenti input text contatti
         search: '',
+        // Errore che certifica se l'utente non inserisce nulla o inserisce solo spazi nell'input messaggio
         error: false,
-    
+
+        settingActive: false,
+        activeMessageIndex: null,
+
         contacts: [
           {
               name: 'Michele',
@@ -183,20 +191,25 @@ createApp({
 
   methods: {
 
+    // Mostra la conversazione relativa (al click del mouse sulla chat)
     showConversation(i) {
       // console.log(`Click effettuato sul contatto n° ${i + 1}`);
       this.activeItem = i;
-      this.activeColor = i
+      this.activeColor = i;
     },
 
+    // Aggiungi messaggio
     addMsg(activeItem) {
-      if (this.userMessage.message.length < 1) {
+      // Verifica se il messaggio non è vuoto o composto solo da spazi
+      this.spaces = this.userMessage.message.trim() === "";
+      if (this.userMessage.message.length < 1 || this.spaces) {
           this.error = true;
         } else {
           this.contacts[activeItem].messages.push({ message: this.userMessage.message, status: 'sent' });
           this.userMessage.message = '';
           this.error = false;
-          
+          // Nel caso in cui il messaggio superi i due requisiti
+          // Risposta automatica dopo 1 secondo
           setTimeout(() => {
             this.contacts[activeItem].messages.push({ message: 'OK', status: 'received' });
           }, 1000);
@@ -204,14 +217,17 @@ createApp({
         }
     },
 
+    // Mostra o fai scomparire le impostazioni del messaggio relativo (info e elimina messaggio)
     toggleMessageSettings(i) {
       // console.log('Click Messaggio ' + i);
-      this.contacts[i].visible = !this.contacts[i].visible
+      // this.contacts.visible = !this.contacts.visible;
+      this.settingActive = !this.settingActive;
+      this.activeMessage = i;
     },
 
-    deleteMessage(contactIndex, i) {
-      // contactIndex si riferisce all'indice dell'array di oggetti "contacts", i è l'indice di riferimento dell'elemento da eliminare
-      this.contacts[contactIndex].messages.splice(i, 1);
+    // Cancella il messaggio corrispondente
+    deleteMessage(activeItem, i) {
+      this.contacts[activeItem].messages.splice(i, 1);
     }    
 
   },

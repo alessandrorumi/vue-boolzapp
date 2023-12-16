@@ -307,12 +307,12 @@ i:hover {
 /* Sezione Invio messaggio */
 
 .send-messsage {
-  height: 50px;
+  min-height: 50px;
   background-color: #f3eeea;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .send-messsage input {
@@ -320,12 +320,14 @@ i:hover {
   height: 70%;
   border: 1px solid lightgray;
   border-radius: 5px;
-  padding-left: 1rem;
+  padding-left: .5rem;
 }
 
 .send-messsage i {
   font-size: 1.25rem;
 }
+
+/* Input type text generali e specifico "invio messaggio" */
 
 input:focus{
   outline: none;
