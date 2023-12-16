@@ -1,3 +1,5 @@
+const { DateTime } = luxon;
+
 const { createApp } = Vue;
 
 createApp({
@@ -205,13 +207,15 @@ createApp({
       if (this.userMessage.message.length < 1 || this.spaces) {
           this.error = true;
         } else {
-          this.contacts[activeItem].messages.push({ message: this.userMessage.message, status: 'sent' });
+          // Formattazione Ora con Luxon (messaggi inviati e ricevuti)
+          let now = DateTime.now().toFormat('HH:mm');
+          this.contacts[activeItem].messages.push({ date: now, message: this.userMessage.message, status: 'sent' });
           this.userMessage.message = '';
           this.error = false;
           // Nel caso in cui il messaggio superi i due requisiti
           // Risposta automatica dopo 1 secondo
           setTimeout(() => {
-            this.contacts[activeItem].messages.push({ message: 'OK', status: 'received' });
+            this.contacts[activeItem].messages.push({ date: now, message: 'OK', status: 'received' });
           }, 1000);
           
         }
@@ -233,7 +237,12 @@ createApp({
   },
 
   mounted() {
-
+    // Formattazione Ora con Luxon
+    this.contacts.forEach(contact => {
+      contact.messages.forEach(message => {
+        message.date = luxon.DateTime.fromFormat(message.date, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm:ss');
+      });
+    });
   }
 
 }).mount('#app')
