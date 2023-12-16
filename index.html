@@ -135,7 +135,6 @@
                 <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i>
                 <div class="message-time">{{ message.date }}</div>
                 <div class="delete-message" >
-                  <!-- <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i> -->
                   <div class="delete-settings" :class="contacts[i].visible ? 'hidden' : 'active' ">
                     <div class="info">Info Messaggio</div>
                     <div class="delete" @click="deleteMessage(activeItem, i)">Cancella Messaggio</div>
@@ -150,7 +149,8 @@
               <div class="smile-icon">
                 <i class="fa-regular fa-face-smile" style="color: #6a6a6a;"></i>
               </div>
-              <input type="text" placeholder="Scrivi un messaggio" v-model="userMessage.message" @keyup.enter="addMsg(activeItem)">
+              <input type="text" :placeholder="error ? 'Errore: Messaggio Vuoto' : 'Scrivi un messaggio'" v-model="userMessage.message" @keyup.enter="addMsg(activeItem)" :class="error ? 'empty-message' : '' ">
+
               <div class="microphone-icon">
                 <i class="fa-solid fa-microphone" style="color: #6a6a6a;"></i>
               </div>

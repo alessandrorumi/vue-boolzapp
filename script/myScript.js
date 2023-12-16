@@ -10,7 +10,7 @@ createApp({
         activeColor: '',
         userMessage: {message: '', status: 'sent'},
         search: '',
-        activeMessageSettings: null, 
+        error: false,
     
         contacts: [
           {
@@ -190,13 +190,18 @@ createApp({
     },
 
     addMsg(activeItem) {
-      this.contacts[activeItem].messages.push({ message: this.userMessage.message, status: 'sent' });
-      this.userMessage.message = '';
-
-      setTimeout(() => {
-        this.contacts[activeItem].messages.push({ message: 'OK', status: 'received' });
-      }, 1000);
-      
+      if (this.userMessage.message.length < 1) {
+          this.error = true;
+        } else {
+          this.contacts[activeItem].messages.push({ message: this.userMessage.message, status: 'sent' });
+          this.userMessage.message = '';
+          this.error = false;
+          
+          setTimeout(() => {
+            this.contacts[activeItem].messages.push({ message: 'OK', status: 'received' });
+          }, 1000);
+          
+        }
     },
 
     toggleMessageSettings(i) {
