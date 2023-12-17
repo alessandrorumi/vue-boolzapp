@@ -14,6 +14,10 @@
   <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
   <!-- Integrazione Luxon -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js"></script>
+  <!-- Integrazione Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
   <!-- Titolo -->
   <title>Boolzapp</title>
 </head>
@@ -117,7 +121,7 @@
                   <div class="name-last-text">
                     <span>{{ contacts[0].name }}</span>
                     <br>
-                    <span class="subtitle">Ultimo messaggio inviato</span>
+                    <span class="subtitle">{{ contacts[activeItem].messages[contacts[activeItem].messages.length - 1].message }}</span>
                   </div>
                   <div class="icons">
                     <i class="fa-solid fa-magnifying-glass" style="color: #c0c0c0;"></i>
