@@ -92,10 +92,10 @@
                   <div class="name-last-text">
                     <span>{{ contact.name }}</span>
                     <br>
-                    <span class="subtitle">Ultimo messaggio inviato</span>
+                    <span class="subtitle">{{ contact.messages[contact.messages.length - 1].message }}</span>
                   </div>
                   <!-- Ora -->
-                  <span class="time subtitle">12:00</span>
+                  <span class="time subtitle">{{ contact.messages[contact.messages.length - 1].date }}</span>
                 </div>
               </div>
               

@@ -222,6 +222,7 @@ createApp({
             })
 
           setTimeout(() => {
+            now = DateTime.now().toFormat('HH:mm');
             this.contacts[activeItem].messages.push({ date: now, message: automaticPokemon, status: 'received' });
           }, 1000);
           
@@ -248,7 +249,7 @@ createApp({
     // Formattazione Ora con Luxon
     this.contacts.forEach(contact => {
       contact.messages.forEach(message => {
-        message.date = luxon.DateTime.fromFormat(message.date, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm:ss');
+        message.date = luxon.DateTime.fromFormat(message.date, 'dd/MM/yyyy HH:mm:ss').toFormat('HH:mm');
       });
     });
   }
