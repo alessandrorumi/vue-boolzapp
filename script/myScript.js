@@ -20,7 +20,6 @@ createApp({
         error: false,
 
         settingActive: false,
-        activeMessageIndex: null,
 
         contacts: [
           {
@@ -196,6 +195,7 @@ createApp({
     // Mostra la conversazione relativa (al click del mouse sulla chat)
     showConversation(i) {
       // console.log(`Click effettuato sul contatto n° ${i + 1}`);
+      this.settingActive = null; // Per evitare di avere il div "settings" aperto dopo aver cambiato chat
       this.activeItem = i;
       this.activeColor = i;
     },
@@ -213,9 +213,16 @@ createApp({
           this.userMessage.message = '';
           this.error = false;
           // Nel caso in cui il messaggio superi i due requisiti
-          // Risposta automatica dopo 1 secondo
+          // Risposta automatica dopo 1 secondo (un Pokemon casuale della 1° Generazione)
+          axios.get("https://pokeapi.co/api/v2/pokemon/?limit=151")
+            .then((risposta) => {
+                // console.log(risposta.data.results.name)
+                let randomNumber = Math.floor(Math.random() * 152);
+                automaticPokemon = risposta.data.results[randomNumber].name
+            })
+
           setTimeout(() => {
-            this.contacts[activeItem].messages.push({ date: now, message: 'OK', status: 'received' });
+            this.contacts[activeItem].messages.push({ date: now, message: automaticPokemon, status: 'received' });
           }, 1000);
           
         }
@@ -232,6 +239,7 @@ createApp({
     // Cancella il messaggio corrispondente
     deleteMessage(activeItem, i) {
       this.contacts[activeItem].messages.splice(i, 1);
+      this.settingActive = !this.settingActive; // Dopo aver cancellato il messaggio si chiude il div "settings"
     }    
 
   },
