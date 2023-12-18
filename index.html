@@ -132,8 +132,13 @@
                   <div class="icons">
                     <i class="fa-solid fa-magnifying-glass" style="color: #c0c0c0;"></i>
                     <i class="fa-solid fa-paperclip" style="color: #c0c0c0;"></i>
-                    <i class="fa-solid fa-ellipsis-vertical" style="color: #c0c0c0;"></i>
-                    
+                    <i class="fa-solid fa-ellipsis-vertical" style="color: #c0c0c0;" @click="toggleMessageSettings(i)"></i>
+                    <div class="delete-message" v-if="settingActive && i === activeMessage">
+                      <div class="delete-settings">
+                        <div class="delete-messages" @click="deleteAllMessages(activeItem)">Elimina Messaggi</div>
+                        <div class="delete-chat" >Elimina Chat</div>
+                      </div>
+                    </div>
                   </div>
                   
                 </div>
@@ -150,7 +155,7 @@
                 <div class="delete-message" v-if="settingActive && i === activeMessage">
                   <div class="delete-settings">
                     <div class="info">Info Messaggio</div>
-                    <div class="delete" @click="deleteMessage(activeItem, i)">Cancella Messaggio</div>
+                    <div class="delete" @click="deleteMessage(activeItem, i)">Elimina Messaggio</div>
                   </div>
                 </div>
               </div>

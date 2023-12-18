@@ -231,7 +231,8 @@ i:hover {
 }
 
 .icons i {
-  margin: 0 .5rem;
+  margin: 0 .25rem;
+  padding: .5rem;
 }
 
 /* Sezione Invio e Ricezione messaggi */

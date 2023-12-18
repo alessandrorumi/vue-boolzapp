@@ -18,7 +18,7 @@ createApp({
         search: '',
         // Errore che certifica se l'utente non inserisce nulla o inserisce solo spazi nell'input messaggio
         error: false,
-
+        // Impostazione popup delle impostazioni per cancellare il messaggio
         settingActive: false,
 
         contacts: [
@@ -225,6 +225,11 @@ createApp({
             now = DateTime.now().toFormat('HH:mm');
             this.contacts[activeItem].messages.push({ date: now, message: automaticPokemon, status: 'received' });
           }, 1000);
+
+          setTimeout(() => {
+            now = DateTime.now().toFormat('HH:mm');
+            this.contacts[activeItem].messages.push({ date: now, message: `https://wiki.pokemoncentral.it/${automaticPokemon}`, status: 'received' });
+          }, 1500);
           
         }
     },
@@ -240,6 +245,11 @@ createApp({
     // Cancella il messaggio corrispondente
     deleteMessage(activeItem, i) {
       this.contacts[activeItem].messages.splice(i, 1);
+      this.settingActive = !this.settingActive; // Dopo aver cancellato il messaggio si chiude il div "settings"
+    },
+
+    deleteAllMessages(activeItem) {
+      this.contacts[activeItem].messages.length = '';
       this.settingActive = !this.settingActive; // Dopo aver cancellato il messaggio si chiude il div "settings"
     }
     
