@@ -241,8 +241,8 @@ createApp({
     deleteMessage(activeItem, i) {
       this.contacts[activeItem].messages.splice(i, 1);
       this.settingActive = !this.settingActive; // Dopo aver cancellato il messaggio si chiude il div "settings"
-    }    
-
+    }
+    
   },
 
   mounted() {

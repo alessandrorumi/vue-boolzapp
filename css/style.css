@@ -270,7 +270,7 @@ i:hover {
 .delete-message {
   position: absolute;
   right: 5px;
-  top: 1.15rem;
+  top: 2.5rem;
   font-size: 10px;
   z-index: 200;
 }
@@ -280,7 +280,6 @@ i:hover {
   width: 120px;
   font-size: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-top: 1.15rem;
   border-radius: 4px;
 }
 

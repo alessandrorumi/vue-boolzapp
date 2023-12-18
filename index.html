@@ -96,10 +96,15 @@
                   <div class="name-last-text">
                     <span>{{ contact.name }}</span>
                     <br>
-                    <span class="subtitle">{{ contact.messages[contact.messages.length - 1].message }}</span>
+                    <span class="subtitle" v-if="[contact.messages.length] > 0">{{ contact.messages[contact.messages.length - 1].message }}</span>
+                    <span class="subtitle" v-else></span>
                   </div>
                   <!-- Ora -->
-                  <span class="time subtitle">{{ contact.messages[contact.messages.length - 1].date }}</span>
+                  <div class="time" >
+                    <span class="time subtitle" v-if="[contact.messages.length] > 0">{{ contact.messages[contact.messages.length - 1].date }}</span>
+                    <span class="time subtitle" v-else></span>
+                  </div>
+                    
                 </div>
               </div>
               
@@ -114,19 +119,21 @@
               <div class="contact" id="profile">
                 <!-- Img -->
                 <div class="image">
-                  <img :src="contacts[0].avatar" :alt="contacts[0].name">
+                  <img :src="contacts[activeItem].avatar" :alt="contacts[activeItem].name">
                 </div>
                 <div class="contact-info">
                   <!-- Nome -->
                   <div class="name-last-text">
-                    <span>{{ contacts[0].name }}</span>
+                    <span>{{ contacts[activeItem].name }}</span>
                     <br>
-                    <span class="subtitle">{{ contacts[activeItem].messages[contacts[activeItem].messages.length - 1].message }}</span>
+                    <span class="subtitle" v-if="[contacts[activeItem].messages.length] > 0">Ultimo accesso alle: 12:00</span>
+                    <span class="subtitle" v-else></span>
                   </div>
                   <div class="icons">
                     <i class="fa-solid fa-magnifying-glass" style="color: #c0c0c0;"></i>
                     <i class="fa-solid fa-paperclip" style="color: #c0c0c0;"></i>
                     <i class="fa-solid fa-ellipsis-vertical" style="color: #c0c0c0;"></i>
+                    
                   </div>
                   
                 </div>
@@ -136,10 +143,10 @@
             <!-- Background Messaggi -->
             <div class="messages-background">
               
-              <div v-for="(message, i) in contacts[activeItem].messages" class="message" :class="message.status === 'sent' ? 'sent' : 'received'">
+              <div v-for="(message, i) in contacts[activeItem].messages" class="message" :class="message.status === 'sent' ? 'sent' : 'received'" :class="error ? 'empty-message' : '' ">
                 {{ message.message }}
-                <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i>
                 <div class="message-time">{{ message.date }}</div>
+                <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i>
                 <div class="delete-message" v-if="settingActive && i === activeMessage">
                   <div class="delete-settings">
                     <div class="info">Info Messaggio</div>
