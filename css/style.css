@@ -92,8 +92,18 @@ i:hover {
   object-fit: cover;
 }
 
-.my-extra i {
-  margin: 0 .5rem;
+.my-extra {
+  display: flex;
+}
+
+.my-extra i:not(.fa-a, .fa-plus, .fa-minus) {
+  padding: 0 .25rem;
+  margin: 0 .25rem;
+}
+
+.decrease-text,
+.increase-text {
+  margin-left: .5rem;
 }
 
 /* Sezione Notifiche */
@@ -130,7 +140,7 @@ i:hover {
 /* Sezione Ricerca Contatti */
 
 .contacts-research {
-  height: 40px;
+  min-height: 40px;
   background-color: #eaeaea;
   padding: 0 1rem;
   display: flex;

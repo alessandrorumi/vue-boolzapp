@@ -21,6 +21,8 @@ createApp({
         // Impostazione popup delle impostazioni per cancellare il messaggio
         settingActive: false,
 
+        textSize: 13,
+
         contacts: [
           {
               name: 'Michele',
@@ -251,6 +253,17 @@ createApp({
     deleteAllMessages(activeItem) {
       this.contacts[activeItem].messages.length = '';
       this.settingActive = !this.settingActive; // Dopo aver cancellato il messaggio si chiude il div "settings"
+    },
+
+    textIncrease() {
+      // this.textSize++
+      this.textSize++
+      console.log(this.textSize)
+    },
+
+    textDecrease() {
+      this.textSize--
+      console.log(this.textSize)
     }
     
   },

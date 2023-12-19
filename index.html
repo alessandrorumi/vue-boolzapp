@@ -58,6 +58,14 @@
 
                <!-- Extra -->
               <div class="my-extra">
+                <div class="decrease-text" @click="textDecrease">
+                  <i class="fa-solid fa-a" style="color: #c0c0c0;"></i>
+                  <i class="fa-solid fa-minus" style="color: #c0c0c0;"></i>
+                </div>
+                <div class="increase-text" @click="textIncrease">
+                  <i class="fa-solid fa-a" style="color: #c0c0c0;"></i>
+                  <i class="fa-solid fa-plus" style="color: #c0c0c0;"></i>
+                </div>
                 <i class="fa-solid fa-circle-notch" style="color: #c0c0c0;"></i>
                 <i class="fa-solid fa-message" style="color: #c0c0c0;"></i>
                 <i class="fa-solid fa-ellipsis-vertical" style="color: #c0c0c0;"></i>
@@ -126,7 +134,7 @@
                   <div class="name-last-text">
                     <span>{{ contacts[activeItem].name }}</span>
                     <br>
-                    <span class="subtitle" v-if="[contacts[activeItem].messages.length] > 0">Ultimo accesso alle: 12:00</span>
+                    <span class="subtitle" v-if="[contacts[activeItem].messages.length] > 0">Ultimo accesso alle: {{ contacts[activeItem].messages[contacts[activeItem].messages.length - 1].date }}</span>
                     <span class="subtitle" v-else></span>
                   </div>
                   <div class="icons">
@@ -148,7 +156,7 @@
             <!-- Background Messaggi -->
             <div class="messages-background">
               
-              <div v-for="(message, i) in contacts[activeItem].messages" class="message" :class="message.status === 'sent' ? 'sent' : 'received'" :class="error ? 'empty-message' : '' ">
+              <div v-for="(message, i) in contacts[activeItem].messages":style="{ 'font-size': textSize + 'px' }" class="message" :class="message.status === 'sent' ? 'sent' : 'received'" :class="error ? 'empty-message' : '' ">
                 {{ message.message }}
                 <div class="message-time">{{ message.date }}</div>
                 <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i>
