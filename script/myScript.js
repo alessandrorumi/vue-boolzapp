@@ -215,24 +215,7 @@ createApp({
           this.userMessage.message = '';
           this.error = false;
           // Nel caso in cui il messaggio superi i due requisiti
-          // Risposta automatica dopo 1 secondo (un Pokemon casuale della 1° Generazione)
-          axios.get("https://pokeapi.co/api/v2/pokemon/?limit=151")
-            .then((risposta) => {
-                // console.log(risposta.data.results.name)
-                let randomNumber = Math.floor(Math.random() * 152);
-                automaticPokemon = risposta.data.results[randomNumber].name
-            })
-
-          setTimeout(() => {
-            now = DateTime.now().toFormat('HH:mm');
-            this.contacts[activeItem].messages.push({ date: now, message: automaticPokemon, status: 'received' });
-          }, 1000);
-
-          setTimeout(() => {
-            now = DateTime.now().toFormat('HH:mm');
-            this.contacts[activeItem].messages.push({ date: now, message: `https://wiki.pokemoncentral.it/${automaticPokemon}`, status: 'received' });
-          }, 1500);
-          
+          this.getPokemon(activeItem)
         }
     },
 
@@ -264,14 +247,34 @@ createApp({
     // Incrementa la grandezza del font
     textIncrease() {
       this.textSize++
-      console.log(this.textSize)
+      // console.log(this.textSize)
     },
 
     // Decrementa la grandezza del font
     textDecrease() {
       this.textSize--
-      console.log(this.textSize)
+      // console.log(this.textSize)
     },
+
+    // Risposta automatica dopo 1 secondo (un Pokemon casuale della 1° Generazione) 
+    getPokemon(activeItem) {
+    axios.get("https://pokeapi.co/api/v2/pokemon/?limit=151")
+      .then((risposta) => {
+        // console.log(risposta.data.results.name)
+        let randomNumber = Math.floor(Math.random() * 152);
+        automaticPokemon = risposta.data.results[randomNumber].name
+      })
+
+    setTimeout(() => {
+      now = DateTime.now().toFormat('HH:mm');
+      this.contacts[activeItem].messages.push({ date: now, message: automaticPokemon, status: 'received' });
+    }, 1000);
+
+    setTimeout(() => {
+      now = DateTime.now().toFormat('HH:mm');
+      this.contacts[activeItem].messages.push({ date: now, message: `https://wiki.pokemoncentral.it/${automaticPokemon}`, status: 'received' });
+    }, 1500);
+    }
 
   },
 
