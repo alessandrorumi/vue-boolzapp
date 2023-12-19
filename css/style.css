@@ -15,11 +15,7 @@ i:hover {
   cursor: pointer;
 }
 
-.active {
-  display: block;
-}
-
-.hidden {
+#hidden {
   display: none;
 }
 

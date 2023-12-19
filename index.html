@@ -25,27 +25,20 @@
 <body>
 
   <div id="app">
-
     <!-- Container principale -->
     <div class="container">
-
       <!-- Sfondo -->
       <div class="background">
-
         <!-- Sfondo Top -->
         <div class="background-top"></div>
         <!-- Sfondo Bottom -->
         <div class="background-bottom"></div>
-
         <!-- Contenuto Boolzapp -->
         <div class="main-content">
-         
           <!-- Accounts (Sinistra)-->
           <div class="accounts">
-          
             <!-- Profilo dell'utente -->
             <div class="my-profile">
-
               <!-- Nome e img -->
               <div class="name-and-image">
                 <div class="my-image">
@@ -89,10 +82,8 @@
               <input type="text" placeholder="Cerca o inizia una nova chat" v-model="search">
               <i class="fa-solid fa-magnifying-glass" style="color: #c0c0c0;"></i>
             </div>
-
             <!-- Lista contatti -->
-            <div class="contacts-list">
-      
+            <div class="contacts-list">      
               <!-- Contatti (Vue) -->
               <div class="contact" v-for="(contact, i) in contacts" :key="i" @click="showConversation(i)" :class="activeColor === i ? 'active' : '' " v-show="contacts[i].name.includes(search)">
                 <!-- Img -->
@@ -112,16 +103,13 @@
                     <span class="time subtitle" v-if="[contact.messages.length] > 0">{{ contact.messages[contact.messages.length - 1].date }}</span>
                     <span class="time subtitle" v-else></span>
                   </div>
-                    
                 </div>
               </div>
-              
             </div>
           </div>
           
           <!-- Messaggi (Destra) -->
           <div class="messages">
-
             <!-- Profilo dell'interlocutore -->
             <div class="contact-profile">
               <div class="contact" id="profile">
@@ -144,19 +132,17 @@
                     <div class="delete-message" v-if="settingActive && i === activeMessage">
                       <div class="delete-settings">
                         <div class="delete-messages" @click="deleteAllMessages(activeItem)">Elimina Messaggi</div>
-                        <div class="delete-chat" >Elimina Chat</div>
+                        <div class="delete-chat" @click="deleteChat(activeItem)">Elimina Chat</div>
                       </div>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </div>
 
             <!-- Background Messaggi -->
             <div class="messages-background">
-              
-              <div v-for="(message, i) in contacts[activeItem].messages":style="{ 'font-size': textSize + 'px' }" class="message" :class="message.status === 'sent' ? 'sent' : 'received'" :class="error ? 'empty-message' : '' ">
+              <div v-for="(message, i) in contacts[activeItem].messages" :style="{ 'font-size': textSize + 'px' }" class="message" :class="message.status === 'sent' ? 'sent' : 'received'" :class="error ? 'empty-message' : '' ">
                 {{ message.message }}
                 <div class="message-time">{{ message.date }}</div>
                 <i class="fa-solid fa-chevron-down" style="color: #8a8a8a;" @click="toggleMessageSettings(i)"></i>
@@ -167,7 +153,6 @@
                   </div>
                 </div>
               </div>
-              
             </div>
 
             <!-- Sezione Invio Messaggio -->
@@ -176,28 +161,20 @@
                 <i class="fa-regular fa-face-smile" style="color: #6a6a6a;"></i>
               </div>
               <input type="text" :placeholder="error ? 'Errore: Messaggio Vuoto' : 'Scrivi un messaggio'" v-model="userMessage.message" @keyup.enter="addMsg(activeItem)" :class="error ? 'empty-message' : '' ">
-              
               <div class="send-icon" v-if="this.userMessage.message.length >= 1">
                 <i class="fa-solid fa-paper-plane" style="color: #6a6a6a; font-size: 1rem;" @click="addMsg(activeItem)"></i>
               </div>
-
               <div class="microphone-icon" v-else>
                 <i class="fa-solid fa-microphone" style="color: #6a6a6a;"></i>
               </div>
             </div>
-
-          </div>
-        
+          </div>      
         </div>
-
       </div>
-
     </div>
-
   </div>
 
   <script src="script/myScript.js"></script>
-  
 
 </body>
 

@@ -20,7 +20,7 @@ createApp({
         error: false,
         // Impostazione popup delle impostazioni per cancellare il messaggio
         settingActive: false,
-
+        // Dimensione del testo (chat)
         textSize: 13,
 
         contacts: [
@@ -239,7 +239,6 @@ createApp({
     // Mostra o fai scomparire le impostazioni del messaggio relativo (info e elimina messaggio)
     toggleMessageSettings(i) {
       // console.log('Click Messaggio ' + i);
-      // this.contacts.visible = !this.contacts.visible;
       this.settingActive = !this.settingActive;
       this.activeMessage = i;
     },
@@ -250,22 +249,30 @@ createApp({
       this.settingActive = !this.settingActive; // Dopo aver cancellato il messaggio si chiude il div "settings"
     },
 
+    // Cancella tutti i messaggi della chat relativa
     deleteAllMessages(activeItem) {
       this.contacts[activeItem].messages.length = '';
       this.settingActive = !this.settingActive; // Dopo aver cancellato il messaggio si chiude il div "settings"
     },
 
+    // Cancella la chat relativa
+    deleteChat(activeItem) {
+      this.contacts.splice(activeItem, 1);
+      this.settingActive = !this.settingActive; // Dopo aver cancellato il messaggio si chiude il div "settings"
+    },
+
+    // Incrementa la grandezza del font
     textIncrease() {
-      // this.textSize++
       this.textSize++
       console.log(this.textSize)
     },
 
+    // Decrementa la grandezza del font
     textDecrease() {
       this.textSize--
       console.log(this.textSize)
-    }
-    
+    },
+
   },
 
   mounted() {
